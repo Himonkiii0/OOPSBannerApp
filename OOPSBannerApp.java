@@ -1,53 +1,66 @@
 /**
-<<<<<<< HEAD
- * OOPSBannerApp UC4 Render OOPS as Banner using String Array and Loop
- *
- * This use case improves upon UC3 by using a String array to store banner lines
- * and iterating through them with a for-each loop, eliminating hardcoded print
- * statements and improving modularity and reusability.
- *
- * @author [Your Name]
- * @version 4.0
+ * OOPSBannerApp UC6 Refactor Banner Logic into Functions
+ * 
+ * This version uses static helper methods to encapsulate character patterns.
+ * This promotes the DRY (Don't Repeat Yourself) principle and modularity.
+ * 
+ * @author himonkiii
+ * @version 6.0
  */
 public class OOPSBannerApp {
-    public static void main(String[] args) {
-        String[] bannerLines = new String[7];
-
-        bannerLines[0] = String.join("", "  *****  ", "  *****  ", " ******* ", "  ***** ");
-        bannerLines[1] = String.join("", " *     * ", " *     * ", " *     * ", " *     * ");
-        bannerLines[2] = String.join("", " *     * ", " *     * ", " *     * ", " *       ");
-        bannerLines[3] = String.join("", " *     * ", " *     * ", " ******* ", "  *****  ");
-        bannerLines[4] = String.join("", " *     * ", " *     * ", " *       ", "       * ");
-        bannerLines[5] = String.join("", " *     * ", " *     * ", " *       ", " *     * ");
-        bannerLines[6] = String.join("", "  *****  ", "  *****  ", " *       ", "  *****  ");
-
-        for (String line : bannerLines) {
-=======
- * OOPSBannerApp UC5 Render OOPS as Banner using Inline Array Initialization
- *
- * This use case refactors UC4 by combining array declaration and initialization.
- * It uses a single statement to populate the banner lines, making the code
- * more concise and readable while retaining the loop-based printing.
- *
- * @author [himonkiii]
- * @version 5.0
- */
-public class OOPSBannerApp {
-    public static void main(String[] args) {
-        // Define and initialize the array in one concise statement
-        String[] lines = {
-            String.join("", "  *****  ", "  *****  ", " ******* ", "  ***** "),
-            String.join("", " *     * ", " *     * ", " *     * ", " *     * "),
-            String.join("", " *     * ", " *     * ", " *     * ", " *       "),
-            String.join("", " *     * ", " *     * ", " ******* ", "  *****  "),
-            String.join("", " *     * ", " *     * ", " *       ", "       * "),
-            String.join("", " *     * ", " *     * ", " *       ", " *     * "),
-            String.join("", "  *****  ", "  *****  ", " *       ", "  *****  ")
+    // Helper Method for Letter 'O'
+    public static String[] getOPattern() {
+        return new String[]{
+            "  *****  ",
+            " *     * ",
+            " *     * ",
+            " *     * ",
+            " *     * ",
+            " *     * ",
+            "  *****  "
         };
-        // Use a loop to print each line of the banner
-        for (String line : lines) {
->>>>>>> feature/UC5-ArrayInit
-            System.out.println(line);
+    }
+    
+    // Helper Method for Letter 'P'
+    public static String[] getPPattern() {
+        return new String[]{
+            " ******* ",
+            " *     * ",
+            " *     * ",
+            " ******* ",
+            " *       ",
+            " *       ",
+            " *       "
+        };
+    }
+    
+    // Helper Method for Letter 'S'
+    public static String[] getSPattern() {
+        return new String[]{
+            "  ***** ",
+            " *     * ",
+            " *       ",
+            "  *****  ",
+            "       * ",
+            " *     * ",
+            "  ***** "
+        };
+    }
+    
+    public static void main(String[] args) {
+        // Fetch patterns from methods
+        String[] oPattern = getOPattern();
+        String[] pPattern = getPPattern();
+        String[] sPattern = getSPattern();
+        
+        // Assemble and print each of the 7 lines
+        for (int i = 0; i < 7; i++) {
+            System.out.println(
+                oPattern[i] + 
+                oPattern[i] + 
+                pPattern[i] + 
+                sPattern[i]
+            );
         }
     }
 }
